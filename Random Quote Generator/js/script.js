@@ -3,7 +3,7 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-var quotesArray = [{
+var quotes = [{
 		quote: "Only I can change my life. No one can do it for me",
 		source: 'Carol burnett'
     },
@@ -33,14 +33,14 @@ var quotesArray = [{
     }
 ];
 
-
+var button = document.getElementById('loadQuote');
 /***
   Create the `getRandomQuote` function to:
    - generate a random number 
    - returns random number when called
 ***/
 function getRandomQuote() {
-	var arrayLength = quotesArray.length;
+	var arrayLength = quotes.length;
 	var randomNum = Math.floor(Math.random() * arrayLength);
 	return randomNum;
 }
@@ -55,10 +55,15 @@ function getRandomQuote() {
 
 function printQuote() {
 	var randomNum = getRandomQuote();
-	document.getElementById("quote").innerHTML = '" ' + quotesArray[randomNum]['quote'] + ' "';
-	document.getElementById("source").innerHTML = '" ' + quotesArray[randomNum]['source'] + ' "';
+	document.getElementById("quote").innerHTML = '" ' + quotes[randomNum]['quote'] + ' "';
+	document.getElementById("source").innerHTML = '" ' + quotes[randomNum]['source'] + ' "';
 
 }
 /***
-  called function directly via html onclick="printQuote()"
+Listen for Button Click Event
 ***/
+
+button.addEventListener('click', ()=>{
+	printQuote();
+})
+
