@@ -1,2 +1,2 @@
 # Project-1
-Simple fun projects 
+Fun projects
