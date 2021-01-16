@@ -2,7 +2,7 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-
+var testing = value;
 const studentList = document.querySelector(".student-list");
 const studentUL_List = document.querySelector("body > div > ul.student-list");
 const page = document.querySelector(".page");
