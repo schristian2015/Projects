@@ -126,20 +126,23 @@ function initialDOMLoadContent(value){
     
 }
 
-// Test for special Charactesr
+// Test for special Characters
 function containsSpecialCharacters(str){
     var regex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g;
 	return regex.test(str);
 }
-
+// Initial DOM Content Setup 
 initialDOMLoadContent(placeHolder);
 
-
+// Update Page Link Function
 function updatePageLinks(){
+    // Get number of filtered items and round up whole number 
     let numberfilterItemsList = document.querySelectorAll('.filter');
     let numOfLinks = Math.ceil(numberfilterItemsList.length / 10);   
+    // Page elements selection 
     let pageElements = document.querySelector(".pagination").children;
     let numOf_None_Links = document.querySelectorAll(".pagination li");
+    // Councter for number of Active Links 
     let activeLinkCounter = 0;
     for(let i = 0; i < numOf_None_Links.length; i++){
         if(numOf_None_Links[i].style.display == ""){
@@ -159,10 +162,11 @@ function updatePageLinks(){
     }
 }
 
-
+//Input Search
 document.querySelector("body > div > div > form").addEventListener("input", (e) => {
     e.preventDefault();
     let listItems = document.querySelectorAll(".student-list li");
+    //Reset the display to default
     function displayReset() {
         for (let i = 0; i < listItems.length; i++) {
             listItems[i].classList.remove("filter");
@@ -175,7 +179,6 @@ document.querySelector("body > div > div > form").addEventListener("input", (e) 
         filtered == 0;
     }
     let nameNode = e.target.nodeName; 
-    console.log(nameNode);
     const showPageActions = {
         'INPUT': ()=>{
             searchStudentList(e.target.value);
@@ -185,8 +188,7 @@ document.querySelector("body > div > div > form").addEventListener("input", (e) 
             if(e.target.value == ""){
                 displayReset();
             }
-            
-                        /*
+            /*
             if(element != null){
                 element.remove();
                 appendPageLinks();
@@ -199,10 +201,10 @@ document.querySelector("body > div > div > form").addEventListener("input", (e) 
     showPageActions[nameNode]();
 });
 
+//Search Button Click
 document.querySelector("body > div > div > form > button").addEventListener("click", (e)=>{
     let listItems = document.querySelectorAll(".student-list li");
     const noResults = createElement("h1", "textContent", 'No Results', 'no-results');
- 
     function noneDisplayListCount(){
         let counter = 0;
         for(let i = 0; i < listItems.length; i++){
@@ -243,6 +245,7 @@ document.querySelector("body > div > div > form > button").addEventListener("cli
 
 })
 
+
 document.querySelector('.pagination').addEventListener("click", (e) => {
     function updateActivePageLink(){
         var elems = document.querySelector(".active");
@@ -251,7 +254,7 @@ document.querySelector('.pagination').addEventListener("click", (e) => {
         }
         e.target.className = "active";
     }
-    console.log("click Pagination");
+    console.log(`click Pagination Link: ${e.target.nodeName}:${e.target.textContent}`);
     
     if (e.target.nodeName === "A") {
         updateActivePageLink();
